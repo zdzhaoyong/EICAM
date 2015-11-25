@@ -58,7 +58,7 @@ and you can also run the program here.
 With the `svar.ParseMain(argc,argv)` fuction lauched, the program will firstly find the
 "ProgramName.cfg" file at the current folder, otherwise the "Default.cfg" will be loaded instead.
 Here shows a demo config file used in demo Svar_Test.
-```js
+```
 // file Default.cfg
 // This is a demo Svar config file, you can set up the parameters
 // here and some simple functions is supported.
