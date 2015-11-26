@@ -1,7 +1,7 @@
 ################################################################################
 #Applications Top Makefile.
 ################################################################################
-subdirs =Svar_Test Timer_Test
+subdirs =Svar_Test Timer_Test CameraTest
 
 #  IMU_Test
 all : $(subdirs)

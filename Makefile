@@ -17,14 +17,24 @@ export LIBS_PATH        = $(TOPDIR)/libs
 export LIB_MAKE_TYPE    = shared # static #
 
 
-.PHONY: all apps libs
+.PHONY: all apps libs sophus vikit_common thirdparty
 all :libs apps
 
 libs:
 	@echo "Compiling librarys of PIL"
 	$(MAKE) -C src
 
-apps: libs
+thirdparty:sophus vikit_common
+
+sophus:
+	@echo "Compiling librarys of PIL"
+	$(MAKE) -C Thirdparty/sophus
+
+vikit_common: sophus
+	@echo "Compiling librarys of PIL"
+	$(MAKE) -C Thirdparty/vikit_common
+
+apps: libs thirdparty
 	@echo "Compiling apps of PIL"
 	$(MAKE) -C apps
 

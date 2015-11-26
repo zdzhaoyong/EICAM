@@ -23,6 +23,13 @@ OPENGL_LDFLAGS          = -lGL -lGLU -lglut -lGLEW
 
 
 ################################################################################
+# OpenMP settings
+################################################################################
+OPENMP_CFLAGS           = 
+OPENMP_LDFLAGS          = -fopenmp
+
+
+################################################################################
 # Opencv
 # run 
 #   export PKG_CONFIG_PATH=/opt/OpenCV-2.4/lib/pkgconfig
