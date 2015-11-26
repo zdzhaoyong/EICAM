@@ -1,3 +1,3 @@
-MODULES += SIMP PI_BASE QT OPENCV 
-COMPILEFLAGS+= -fopenmp
+MODULES += SIMP PI_BASE OPENCV
+#MODULES += OPENMP #seems even faster without openmp
 

@@ -86,14 +86,14 @@ bool CameraTest(Camera* camera)
     cout<<"Image:"<<testP<<",Plane:"<<cam_P<<",ReProject:"<<rep_P<<endl;
 
     //UnProject
-    string time_name=string(camera->CameraType()+"::UnProject");
+    string time_name=string(camera->CameraType()+"::Old::UnProject");
     timer.enter(time_name.c_str());
     for(int i=0;i<times;i++)
         vec_cam[i]=camera->UnProject(vec_p[i]);
     timer.leave(time_name.c_str());
 
     //Project
-    time_name=string(camera->CameraType()+"::Project");
+    time_name=string(camera->CameraType()+"::Old::Project");
     timer.enter(time_name.c_str());
     for(int i=0;i<times;i++)
         vec_re[i]=camera->Project(vec_cam[i]);
@@ -133,14 +133,14 @@ bool CameraTest(pi::hardware::Camera camera)
     cout<<"Image:"<<testP<<",World:"<<cam_P<<",ReProject:"<<rep_P<<endl;
 
     //UnProject
-    string time_name=string(camera.CameraType()+"::H::UnProject");
+    string time_name=string(camera.CameraType()+"::New::UnProject");
     timer.enter(time_name.c_str());
     for(int i=0;i<times;i++)
         vec_cam[i]=camera.UnProject(vec_p[i]);
     timer.leave(time_name.c_str());
 
     //Project
-    time_name=string(camera.CameraType()+"::H::Project");
+    time_name=string(camera.CameraType()+"::New::Project");
     timer.enter(time_name.c_str());
     for(int i=0;i<times;i++)
         vec_re[i]=camera.Project(vec_cam[i]);
@@ -230,11 +230,13 @@ int main(int argc,char** argv)
         undis.undistortFast(img,result_fast);
         timer.leave("UndistortionFast");
         cv::imshow("result_fast",result_fast);
+        cv::imwrite("result_fast.jpg",result_fast);
 
         timer.enter("Undistortion");
         undis.undistort(img,result);
         timer.leave("Undistortion");
         cv::imshow("result",result);
+        cv::imwrite("result.jpg",result);
 
         cv::Mat gray_img,gray_result,grayfast;
         cv::cvtColor(img,gray_img,CV_BGR2GRAY);
@@ -242,11 +244,13 @@ int main(int argc,char** argv)
         undis.undistortFast(gray_img,grayfast);
         timer.leave("UndistorionFastGray");
         cv::imshow("grayfast",grayfast);
+        cv::imwrite("grayfast.jpg",grayfast);
 
         timer.enter("UndistorionGray");
         undis.undistort(gray_img,gray_result);
         timer.leave("UndistorionGray");
         cv::imshow("gray_result",gray_result);
+        cv::imwrite("gray_result.jpg",gray_result);
 
         cv::waitKey();
     }
