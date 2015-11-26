@@ -141,23 +141,11 @@ The table shows that the new version obtains the best performance.
 
 ###3.3. Undistortion result
 | Bilinear Interpolation   | Nearist Interpolation (fast operation)  |
-| --------   | :----:  |
-|![result_fast(2.0ms)](./apps/CameraTest/result_fast.jpg)result_fast(2.0ms)|
+| :--------:   | :----:  |
+|![result(20.0ms)](./apps/CameraTest/result.jpg)result(20.0ms)|![result_fast(2.0ms)](./apps/CameraTest/result_fast.jpg)result_fast(2.0ms)|
 |![gray_result(4.7ms)](./apps/CameraTest/gray_result.jpg)gray_result(4.7ms)|![grayfast(1.3ms)](./apps/CameraTest/grayfast.jpg)grayfast(1.3ms)|
-<table><tbody>
-<tr>
-<td><em>Bilinear Interpolation</em></td>
-<td><em>Nearist Interpolation (fast operation)</em></td>
-</tr>
-<tr>
-<td><img src="./apps/CameraTest/result.jpg" height="200" width="200" /> result(20.0ms) </td>
-<td><img src="./apps/CameraTest/result_fast.jpg" height="200" width="200" /> result_fast(2.0ms) </td>
-</tr>
-<tr>
-<td><img src="./apps/CameraTest/gray_result.jpg" height="200" width="200" /> gray_result(4.7ms) </td>
-<td><img src="./apps/CameraTest/grayfast.jpg" height="200" width="200" /> grayfast(1.3ms) </td>
-</tr>
-</tbody></table>
+
+
 ##4. Contact
 ------------------------------------------------------------------------------
 If you have any problem, or you have some suggestions for this code, 
