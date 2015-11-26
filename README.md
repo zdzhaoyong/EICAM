@@ -40,7 +40,7 @@ Run the demo CameraTest:
 In this demo, we compare different camera models and their implimentations in both accuracy and efficiency, in which the EICAM obtains the best performence and keeps very easy to use. 
 ###3.2. Usage demo
 Just given the name or file, a camera can be created and all the cameras shares the two important functions: 
-``` cpp
+```cpp
 // file Cameras.h
 class Camera
 {
@@ -103,6 +103,46 @@ GoProIdeaM1080.CameraType   = PinHole
 GoProIdeaM1080.Paraments    = [1920 1080 1110 1110 960 540]
 ```
 All the parameters are read by Svar, see [PI_Base](http://zhaoyong.adv-ci.com/pibase/) for the details.
+
+###3.2. Time usage statistics
+The follow table is obtained from the result of demo CameraTest, where for each camera instance 1. million times of projection and unprojection function are called. 
+```
+---------------------------- ZhaoYong::Timer report --------------------------
+CameraType::Implimentation::FUNCTION       #CALLS  MIN.T  MEAN.T  MAX.T  TOTAL 
+------------------------------------------------------------------------------
+ANTA::Old::Project                           1   40.4ms  40.4ms  40.4ms  40.4ms
+ANTA::Old::UnProject                         1   57.4ms  57.4ms  57.4ms  57.4ms
+ANTA::VK::Project                            1   47.9ms  47.9ms  47.9ms  47.9ms
+ANTA::VK::UnProject                          1   52.4ms  52.4ms  52.4ms  52.4ms
+ATAN::New::Project                           1   48.6ms  48.6ms  48.6ms  48.6ms
+ATAN::New::UnProject                         1   49.2ms  49.2ms  49.2ms  49.2ms
+DoNothing                                    1    1.0us   1.0us   1.0us   1.0us
+OCAM::New::Project                           1   83.1ms  83.1ms  83.1ms  83.1ms
+OCAM::New::UnProject                         1   33.0ms  33.0ms  33.0ms  33.0ms
+OpenCV::New::Project                         1   10.0ms  10.0ms  10.0ms  10.0ms
+OpenCV::New::UnProject                       1  541.2ms 541.2ms 541.2ms 541.2ms
+OpenCV::Old::Project                         1   10.5ms  10.5ms  10.5ms  10.5ms
+OpenCV::Old::UnProject                       1  540.3ms 540.3ms 540.3ms 540.3ms
+OpenCV::VK::Project                          1   16.7ms  16.7ms  16.7ms  16.7ms
+OpenCV::VK::UnProject                        1  539.2ms 539.2ms 539.2ms 539.2ms
+PinHole::New::Project                        1    7.7ms   7.7ms   7.7ms   7.7ms
+PinHole::New::UnProject                      1    7.8ms   7.8ms   7.8ms   7.8ms
+PinHole::Old::Project                        1    8.8ms   8.8ms   8.8ms   8.8ms
+PinHole::Old::UnProject                      1    8.1ms   8.1ms   8.1ms   8.1ms
+PinHole::VK::Project                         1    9.8ms   9.8ms   9.8ms   9.8ms
+PinHole::VK::UnProject                       1   29.4ms  29.4ms  29.4ms  29.4ms
+UndistorionFastGray                          1    1.3ms   1.3ms   1.3ms   1.3ms
+UndistorionGray                              1    4.7ms   4.7ms   4.7ms   4.7ms
+Undistortion                                 1   20.0ms  20.0ms  20.0ms  20.0ms
+UndistortionFast                             1    2.0ms   2.0ms   2.0ms   2.0ms
+----------------------- End of ZhaoYong::Timer report ------------------------
+```
+The table shows that the new version obtains the best performance.
+
+![result(20.0ms)](./apps/CameraTest/result.jpg)
+![result_fast(2.0ms)](./apps/CameraTest/result_fast.jpg)
+![grayresult(4.7ms)](./apps/CameraTest/grayresult.jpg)
+![grayfast(1.3ms)](./apps/CameraTest/grayfast.jpg)
 
 ##4. Contact
 ------------------------------------------------------------------------------
