@@ -138,11 +138,10 @@ UndistortionFast                             1    2.0ms   2.0ms   2.0ms   2.0ms
 ----------------------- End of ZhaoYong::Timer report ------------------------
 ```
 The table shows that the new version obtains the best performance.
-
-![result(20.0ms)](./apps/CameraTest/result.jpg)
-![result_fast(2.0ms)](./apps/CameraTest/result_fast.jpg)
-![grayresult(4.7ms)](./apps/CameraTest/grayresult.jpg)
-![grayfast(1.3ms)](./apps/CameraTest/grayfast.jpg)
+| Bilinear Interpolation   | Nearist Interpolation (fast operation)  |
+| --------   | :----:  |
+|![result(20.0ms)](./apps/CameraTest/result.jpg)result(20.0ms)|![result_fast(2.0ms)](./apps/CameraTest/result_fast.jpg)result_fast(2.0ms)|
+|![gray_result(4.7ms)](./apps/CameraTest/gray_result.jpg)gray_result(4.7ms)|![grayfast(1.3ms)](./apps/CameraTest/grayfast.jpg)grayfast(1.3ms)|
 
 ##4. Contact
 ------------------------------------------------------------------------------
