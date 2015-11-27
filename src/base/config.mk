@@ -2,5 +2,5 @@
 #   sub-project configure
 ################################################################################################
 
-MODULES         += PTHREAD TooN
+MODULES         += PTHREAD
 INCLUDE_PATH    += $(LIB_PI_TOP)/src
