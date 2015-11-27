@@ -208,7 +208,7 @@ LIB_PI_INCP             = $(LIB_PI_TOP)/src
 LIB_PI_LIBP             = $(LIB_PI_TOP)/libs
 
 
-LIB_PI_CFLAGS           = -I$(LIB_PI_INCP) $(TooN_CFLAGS)
+LIB_PI_CFLAGS           = -I$(LIB_PI_INCP) 
 LIB_PI_LDFLAGS          = -Wl,-rpath=. -L$(LIB_PI_LIBP) \
                           -lpi_lua -lpi_gui -lpi_network -lpi_slam -lpi_cv -lpi_hardware \
                           -lpi_uav -lpi_base

@@ -37,12 +37,106 @@ After compilation, the application will be listed in folder *bin*, but since it 
 Run the demo CameraTest:
 `cd apps/CameraTest`
 `make run`
+<<<<<<< HEAD
 In this demo, we compare different camera models and their implimentations in both accuracy and efficiency, in which the EICAM obtains the best performence and keeps very easy to use. 
 ###3.2. Usage demo
 Just given the name or file, a camera can be created and all the cameras shares the two important functions: 
 ```cpp
 // file Cameras.h
 class Camera
+=======
+
+###3.2. Svar usage introduction
+To introduce the two class Svar and Timer, a simple demo is demostrated below.
+It contains some of the base usages which are very easy to use and we divided them into two parts:
+>1. Config file writing. This file should be parsed by the program 
+and you can also run the program here.
+
+
+>2. C++ codes. This loaded the config file at the right time (most in the main function).
+
+#### 3.2.1. How to write a config file?
+With the `svar.ParseMain(argc,argv)` fuction lauched, the program will firstly find the
+"ProgramName.cfg" file at the current folder, otherwise the "Default.cfg" will be loaded instead.
+Here shows a demo config file used in demo Svar_Test.
+```
+// file Default.cfg
+// This is a demo Svar config file, you can set up the parameters
+// here and some simple functions is supported.
+
+// 1.Build in paraments: argv0 ProgramPath ProgramName Svar.ParsingFile
+// Svar.ParsingPath Svar.ParsingName
+echo ProgramPath=$(ProgramPath) 
+echo ProgramName=$(ProgramName)
+echo parsing Path:$(Svar.ParsingPath) File:$(Svar.ParsingName)
+
+// 2.Function Demo
+
+echo Parsing functions
+function loadCamera
+    echo Function loadCamera called.
+    echo Parsing $(CameraConfigFile).
+    //Parse another file
+    include $(CameraConfigFile)
+endfunction
+
+function loadTestCommand
+    include data/TestCommand.cfg
+endfunction
+
+// 3.Parament settings
+echo Setting Paraments
+ShouldCall      =loadCamera
+CameraConfigFile=Camera.cfg
+// ?= won't overwrite existed value
+TestLanguage    = Success
+TestLanguage   ?= Error!
+//reference is suported
+${TestLanguage} = ${TestLanguage} (should be Success)
+
+// 4.Judgement commands:if，else, endif，
+// != are also supported
+echo Running if else
+if ${ShouldCall} = loadCamera
+    echo $(ShouldCall) and loadCamera is equal!
+    loadCamera
+    loadTestCommand
+else
+    loadTestCommand
+    echo $(ShouldCall) and loadCamera is not equal!
+endif //fi is also ok
+
+// 5.One can get the Default value from SvarWithType
+GetInt SvarWithType.TestInt
+echo SvarWithType.TestInt=$(SvarWithType.TestInt)
+//Now SvarWith.TestInt may be 0, and program need 1000, so
+SvarWithType.TestInt=1000
+
+echo I am parsing Path:$(Svar.ParsingPath) File:$(Svar.ParsingName)
+
+echo Finished $(Svar.ParsingFile)
+```
+####3.2.2. What Svar can do and how to use it?
+The Svar class parse your config file and commands, 
+so that parameters can be obtained and commands can be handled easily through out the whole process.
+With template class SvarWithType, any class infomation can be shared with a string key,
+this is pretty cool!
+In the follow demo Svar_Test, the time usage statistic tool is also used, really easy!
+```
+// file main.cpp
+#include <iostream>
+
+#include <base/Svar/Svar_Inc.h>
+#include <base/time/Global_Timer.h>
+#include <base/Svar/Scommand.h>
+#include <base/Svar/VecParament.h>
+#include <base/types/types.h>
+
+using namespace std;
+using namespace pi;
+
+void builtin_test(void* /* ptr */, string /* sCommand */, string sParams)
+>>>>>>> 6fbce97db6fa8047164649d45debcad4e1dc3206
 {
 public: 
     ...
